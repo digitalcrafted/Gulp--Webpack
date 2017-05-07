@@ -1,0 +1,25 @@
+{
+  "name": "Gulp--Webpack",
+  "version": "1.0.0",
+  "description": "Tranisitioning from Gulp to Webpack",
+  "main": "index.js",
+  "repository": "https://github.com/digitalcrafted/Gulp--Webpack",
+  "author": "fran@mobnia.com",
+  "license": "MIT",
+  "devDependencies": {
+    "foundation-sites": "^6.3.1",
+    "gulp": "^3.9.1",
+    "gulp-babili": "^0.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-filter": "^5.0.0",
+    "gulp-html-replace": "^1.6.2",
+    "gulp-order": "^1.1.1",
+    "gulp-purifycss": "^0.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-rev-append": "^0.1.8",
+    "gulp-sass": "^3.1.0",
+    "minigram": "^0.1.1",
+    "node-sass": "^4.5.2"
+  }
+}
