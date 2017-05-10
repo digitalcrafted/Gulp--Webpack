@@ -2,6 +2,6 @@ $(document).foundation();
 new Minigram('.gallery_items', {
     counter: 4,
     resolution: 'low',
-    token: '4762542645.d6bd03b.799fa66470d8445c9eb633c1e88da19d',
+    token: '5389616258.a8e083e.8d785edd52ce48bc95e9add918df3cf7',
     html: '<div class="column column-block"><div class="gallery-item"><a href="{url}" target="_blank"><img src="{image}" alt="{caption}"></a></div></div>'
 });

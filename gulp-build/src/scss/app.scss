@@ -26,19 +26,18 @@ html, body {
 
 
 body {
-  background: #56CCF2;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #ECE9E6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background-size: 100% 300%;
   font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
 
 .off-canvas {
-  background: #56CCF2;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: #ECE9E6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background-size: 100% 300%;
   .menu > li > a {
     color: #fff;
@@ -82,7 +81,7 @@ header {
   }
 
   .menu > li > a {
-    color: #fff;
+    color: #4c9ed9;
     font-weight: 800;
     @include font-size(18px);
     padding: .7rem 1.5rem;
@@ -223,7 +222,7 @@ header {
   position: absolute;
   pointer-events: none;
   border-color: rgba(74,141,192, 0);
-  border-top-color: #699abc;
+  border-top-color: #F5F4F2;
   border-width: 15px;
   z-index: 1000000;
   /*margin-left: -18px;*/
