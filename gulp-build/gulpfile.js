@@ -72,7 +72,7 @@ var paths = {
 }
 // Concatenate JS Files
 gulp.task('js', function () {
-    gulp.src(paths.js)
+    return gulp.src(paths.js)
         .pipe(order([
             '**/jquery.js',
             '**/foundation.core.js',
@@ -91,13 +91,15 @@ gulp.task('js', function () {
         .pipe(rev())
         .pipe(gulp.dest(dest + 'js'))  // write rev'd assets to build dir
         .pipe(rev.manifest({
+            base: root,
             merge: true // merge with the existing manifest (if one exists)
         }))
-        .pipe(gulp.dest(root))
+        .pipe(gulp.dest(root));
+    
 });
 // Compile CSS from Sass files
 gulp.task('sass', function () {
-    gulp.src(paths.styles)
+     return gulp.src(paths.styles)
         .pipe(order([
             '**/app.scss',
             '*'
@@ -116,20 +118,22 @@ gulp.task('sass', function () {
             base: root,
             merge: true // merge with the existing manifest (if one exists)
         }))
-        .pipe(gulp.dest(root))
+        .pipe(gulp.dest(root));
+    
 });
 //images
-gulp.task('images', function () {
+gulp.task('images', function (cb) {
     return gulp.src('src/img/**/*', {
         base: 'src'
     })
-        .pipe(gulp.dest(dest))
+        .pipe(gulp.dest(dest));
+    
 });
 
 //html replacements
-gulp.task('html', function () {
+gulp.task('html', function (cb) {
     var manifest = JSON.parse(fs.readFileSync(root+'rev-manifest.json', 'utf8'));
-    gulp.src(paths.html)
+   return gulp.src(paths.html)
         .pipe(htmlreplace({
             'css': '<link href="css/'+manifest['app.min.css']+'" rel="stylesheet">',
             'js': '<script src="js/'+manifest['app.min.js']+'" type="text/javascript"></script>',
@@ -147,8 +151,9 @@ gulp.task('html', function () {
                 tpl: '%s'
             }
         }))
-        .pipe(gulp.dest(dest))
+        .pipe(gulp.dest(dest));
+    
 });
 
 // Default Task
-gulp.task('default', ['js', 'sass', 'images', 'html']);
+gulp.task('default', gulp.series('sass','js', 'images', 'html'));
