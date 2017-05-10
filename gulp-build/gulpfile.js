@@ -1,10 +1,11 @@
-var gulp = require('gulp'),
+var fs = require('fs'),
+    gulp = require('gulp'),
     concat = require('gulp-concat'),
     rename = require('gulp-rename'),
     sass = require('gulp-sass'),
     filter = require('gulp-filter'),
     order = require('gulp-order'),
-    rev = require('gulp-rev-append'),
+    rev = require('gulp-rev'),
     purifycss = require('gulp-purifycss'),
     cssnano = require('gulp-cssnano'),
     htmlreplace = require('gulp-html-replace'),
@@ -13,8 +14,9 @@ var gulp = require('gulp'),
 // Define base folders
 var src = 'src/';
 var dest = 'dist/';
-var foundation_path = 'node_modules/foundation-sites/js/';
 var jquery_path = 'node_modules/jquery/dist/';
+var foundation_path = 'node_modules/foundation-sites/js/';
+var root = './';
 
 // paths
 var paths = {
@@ -52,6 +54,7 @@ var paths = {
         //foundation_path + 'foundation.toggler.js',
         //foundation_path + 'foundation.tooltip.js', 
         //'node_modules/what-input/dist/what-input.js',
+        'node_modules/motion-ui/dist/motion-ui.js',
         'node_modules/minigram/dist/minigram.js',
         'src/js/app.js'
     ],
@@ -71,19 +74,26 @@ var paths = {
 gulp.task('js', function () {
     gulp.src(paths.js)
         .pipe(order([
-            //'**/jquery.js', // see path.js for reason
+            '**/jquery.js',
             '**/foundation.core.js',
             '**/foundation.*.js',
+            '**/motion-ui.js',
             '**/minigram.js',
             '*'
         ]))
         .pipe(concat('app.js'))
+        .pipe(rename({suffix: '.min'}))
         .pipe(babili({
             mangle: {
                 keepClassNames: true
             }
         }))
-        .pipe(gulp.dest(dest + 'js'))
+        .pipe(rev())
+        .pipe(gulp.dest(dest + 'js'))  // write rev'd assets to build dir
+        .pipe(rev.manifest({
+            merge: true // merge with the existing manifest (if one exists)
+        }))
+        .pipe(gulp.dest(root))
 });
 // Compile CSS from Sass files
 gulp.task('sass', function () {
@@ -100,7 +110,13 @@ gulp.task('sass', function () {
         .pipe(concat('app.css'))
         .pipe(rename({suffix: '.min'}))
         .pipe(cssnano())
-        .pipe(gulp.dest(dest + 'css'))
+        .pipe(rev())
+        .pipe(gulp.dest(dest + 'css'))  // write rev'd assets to build dir
+        .pipe(rev.manifest({
+            base: root,
+            merge: true // merge with the existing manifest (if one exists)
+        }))
+        .pipe(gulp.dest(root))
 });
 //images
 gulp.task('images', function () {
@@ -109,20 +125,14 @@ gulp.task('images', function () {
     })
         .pipe(gulp.dest(dest))
 });
-//
-gulp.task('fonts', function () {
-    return gulp.src('src/fonts/**/*', {
-        base: 'src/fonts'
-    })
-        .pipe(gulp.dest(dest + "/fonts/"))
-        .pipe(reload({stream: true}));
-});
+
 //html replacements
 gulp.task('html', function () {
+    var manifest = JSON.parse(fs.readFileSync(root+'rev-manifest.json', 'utf8'));
     gulp.src(paths.html)
         .pipe(htmlreplace({
-            'css': '<link href="css/app.min.css" rel="stylesheet">',
-            'js': 'js/app.js',
+            'css': '<link href="css/'+manifest['app.min.css']+'" rel="stylesheet">',
+            'js': '<script src="js/'+manifest['app.min.js']+'" type="text/javascript"></script>',
             'title': ' Built via Gulp',
             'footer': {
                 src: gulp.src(paths.partials.footer),
@@ -139,11 +149,6 @@ gulp.task('html', function () {
         }))
         .pipe(gulp.dest(dest))
 });
-//
-gulp.task('rev', function () {
-    gulp.src(src + 'index.html')
-        .pipe(rev())
-        .pipe(gulp.dest('.'));
-});
+
 // Default Task
-gulp.task('default', ['js', 'sass', 'images', 'rev', 'html']);
+gulp.task('default', ['js', 'sass', 'images', 'html']);

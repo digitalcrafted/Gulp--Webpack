@@ -1,6 +1,6 @@
 @import 'settings';
-// @import 'foundation-icons';
 @import '../../node_modules/foundation-sites/scss/foundation';
+@import "../../node_modules/motion-ui/dist/motion-ui.css";
 
 @include foundation-everything;
 @function calculateRem($size) {
@@ -26,16 +26,19 @@ html, body {
 
 
 body {
-  background: #AA7ECD no-repeat; /* fallback for old browsers */
-  background: linear-gradient(280deg,#2d7cab,#4d8ec0,#0574b3) no-repeat;
+  background: #56CCF2;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background-size: 100% 300%;
   font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
 
 .off-canvas {
-  background: #AA7ECD no-repeat; /* fallback for old browsers */
-  background: linear-gradient(280deg,#2d7cab,#4d8ec0,#0574b3) no-repeat;
+  background: #56CCF2;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   background-size: 100% 300%;
   .menu > li > a {
     color: #fff;
@@ -220,7 +223,7 @@ header {
   position: absolute;
   pointer-events: none;
   border-color: rgba(74,141,192, 0);
-  border-top-color: #3c88bd;
+  border-top-color: #699abc;
   border-width: 15px;
   z-index: 1000000;
   /*margin-left: -18px;*/
