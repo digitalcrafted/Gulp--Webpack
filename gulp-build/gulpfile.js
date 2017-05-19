@@ -82,12 +82,12 @@ gulp.task('js', function () {
             '*'
         ]))
         .pipe(concat('app.js'))
-        .pipe(rename({suffix: '.min'}))
         .pipe(babili({
             mangle: {
                 keepClassNames: true
             }
         }))
+        .pipe(rename({suffix: '.min'}))
         .pipe(rev())
         .pipe(gulp.dest(dest + 'js'))  // write rev'd assets to build dir
         .pipe(rev.manifest({
