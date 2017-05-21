@@ -1,7 +1,7 @@
 /**
- * Created by craft on 05/05/2017.
+ * Created by craft on 20/05/2017.
  */
-var foundation_path = '../../node_modules/foundation-sites/js/';
+const foundation_path = '../../node_modules/foundation-sites/js/';
 
 
 // Foundation core - needed if you want to use any of the components below 
