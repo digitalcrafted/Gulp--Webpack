@@ -5,5 +5,8 @@
   "main": "src/app.js",
   "repository": "https://github.com/digitalcrafted/Gulp--Webpack",
   "author": "fran@mobnia.com",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^2.5.1"
+  }
 }
