@@ -1,0 +1,1 @@
+console.log("I'm the minimal entry point");
