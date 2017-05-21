@@ -2,7 +2,7 @@
   "name": "Gulp--Webpack",
   "version": "1.0.0",
   "description": "Tranisitioning from Gulp to Webpack",
-  "main": "index.js",
+  "main": "src/app.js",
   "repository": "https://github.com/digitalcrafted/Gulp--Webpack",
   "author": "fran@mobnia.com",
   "license": "MIT"
