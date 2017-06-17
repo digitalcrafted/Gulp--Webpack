@@ -3,7 +3,6 @@
  */
 const foundation_path = '../../node_modules/foundation-sites/js/';
 
-
 // Foundation core - needed if you want to use any of the components below 
 require(foundation_path + 'foundation.core');
 // Pick the components you need in your project 
