@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- build:meta --> <!-- endbuild -->
+    ${require('./partials/meta.html')}
     <title>Gulp->Webpack | <!-- build:title -->  <!-- endbuild --> </title>
-    <!-- build:css -->
-    <link href="../dist/css/app.min.css" rel="stylesheet">
-    <!-- endbuild -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 </head>
 <body>
@@ -162,9 +159,8 @@
         </div>
     </section>
 
-    <!-- build:footer --> <!-- endbuild -->
+    ${require('./partials/footer.html')}
 </div>
-<!-- build:js --> <!-- endbuild -->
-<!-- build:data -->  <!-- endbuild -->
+${require('./partials/data.html')}
 </body>
 </html>
