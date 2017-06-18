@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    ${require('./partials/meta.html')}
+    <%= require('html-loader!./partials/meta.html') %>
     <title>Gulp->Webpack | <!-- build:title -->  <!-- endbuild --> </title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 </head>
@@ -125,7 +125,10 @@
                     <div class="news-item" data-equalizer-watch>
                         <div class="news-thumbnail"><img src="https://placeimg.com/364/163/tech" class="" alt=""></div>
                         <div class="news-title"><h3>What is Lorem Ipsum?</h3></div>
-                        <div class="news-summary show-for-medium"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book…</p></div>
+                        <div class="news-summary show-for-medium"><p>Lorem Ipsum is simply dummy text of the printing
+                            and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since
+                            the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                            specimen book…</p></div>
                     </div>
                 </a>
             </div>
@@ -134,16 +137,21 @@
                     <div class="news-item" data-equalizer-watch>
                         <div class="news-thumbnail"><img src="https://placeimg.com/364/163/tech" class="" alt=""></div>
                         <div class="news-title"><h3>Where does it come from?</h3></div>
-                        <div class="news-summary show-for-medium"><p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old…</p></div>
+                        <div class="news-summary show-for-medium"><p>Contrary to popular belief, Lorem Ipsum is not
+                            simply random text. It has roots in a piece of classical Latin literature from 45 BC, making
+                            it over 2000 years old…</p></div>
                     </div>
                 </a>
             </div>
             <div class="column column-block">
                 <a href="#">
                     <div class="news-item" data-equalizer-watch>
-                        <div class="news-thumbnail show-for-medium"><img src="https://placeimg.com/364/163/tech" class="" alt=""></div>
+                        <div class="news-thumbnail show-for-medium"><img src="https://placeimg.com/364/163/tech"
+                                                                         class="" alt=""></div>
                         <div class="news-title"><h3>Where does it come from?</h3></div>
-                        <div class="news-summary show-for-medium"><p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old…</p></div>
+                        <div class="news-summary show-for-medium"><p>Contrary to popular belief, Lorem Ipsum is not
+                            simply random text. It has roots in a piece of classical Latin literature from 45 BC, making
+                            it over 2000 years old…</p></div>
                     </div>
                 </a>
             </div>
@@ -158,9 +166,8 @@
 
         </div>
     </section>
-
-    ${require('./partials/footer.html')}
+    <%= require('html-loader!./partials/footer.html') %>
 </div>
-${require('./partials/data.html')}
+<%= require('html-loader!./partials/data.html') %>
 </body>
 </html>

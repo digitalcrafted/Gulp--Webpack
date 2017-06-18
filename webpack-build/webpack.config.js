@@ -43,8 +43,12 @@ module.exports = {
                 })
             },
             {
-                test: /\.html$/,
-                loader: 'html-loader'
+                test: /\.(jpg|png|svg)$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath:'.dist/img/'
+                },
             }
             // Loaders for other file types can go here
 
