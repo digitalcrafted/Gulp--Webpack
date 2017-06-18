@@ -41,8 +41,11 @@ module.exports = {
                         }
                     ]
                 })
+            },
+            {
+                test: /\.html$/,
+                loader: 'html-loader'
             }
-
             // Loaders for other file types can go here
 
         ],
@@ -51,5 +54,4 @@ module.exports = {
         extractSass,
         createHtml
     ]
-
 };
