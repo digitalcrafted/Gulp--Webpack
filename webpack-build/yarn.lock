@@ -1684,6 +1684,10 @@ jquery@>=2.2.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
 
+jquery@^2.2.0:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
+
 js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.1.9.tgz#f0e80ae039a4bd654b5f281fc93f04a914a7fcce"
@@ -1966,6 +1970,12 @@ mixin-object@^2.0.1:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
     minimist "0.0.8"
+
+motion-ui@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/motion-ui/-/motion-ui-1.2.2.tgz#ee13bdc498c9d691f0d2907114afd8b0d7a76b2f"
+  dependencies:
+    jquery "^2.2.0"
 
 ms@2.0.0:
   version "2.0.0"
