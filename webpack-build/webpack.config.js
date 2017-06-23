@@ -1,21 +1,40 @@
 const path = require('path');
+const glob = require('glob-all');
+const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const PurifyCSSPlugin = require('purifycss-webpack');
 const extractSass = new ExtractTextPlugin({
-    filename: "../css/[name].[contenthash:8].css",
+    filename: "css/[name].[contenthash:8].css",
+});
+const purify = new PurifyCSSPlugin({
+    // Give paths to parse for rules. These should be absolute!
+    paths: glob.sync([
+        path.join(__dirname, 'src/*.html'),
+        path.join(__dirname, 'src/partials/*.html'),
+        path.join(__dirname, 'dist/js/*.js')
+    ]),
+    minimize: true
 });
 const createHtml = new HtmlWebpackPlugin({
-    filename: "../index.html",
+    filename: "index.html",
     template: './src/index.html'
+});
+const copyfiles = new CopyWebpackPlugin([
+    // Copy directory contents to {output}/to/directory/
+    {from: './src/img', to: '../img'},
+], {
+    ignore: [],
+    copyUnmodified: true
 });
 module.exports = {
     entry: {
         app: './src/js/app.js'
     },
     output: {
-        filename: '[name].[chunkhash:8].js',
-        path: path.resolve(__dirname, 'dist/js')
-
+        filename: 'js/[name].[chunkhash:8].js',
+        path: path.resolve(__dirname, 'dist/')
     },
     module: {
         rules: [
@@ -30,9 +49,6 @@ module.exports = {
                 test: /\.scss$/,
                 use: extractSass.extract({
                     use: [
-                        /* {
-                         loader: "style-loader" // creates style nodes from JS strings <= We wont need this after we use the extractsass plugin
-                         },*/
                         {
                             loader: "css-loader" // translates CSS into CommonJS
                         },
@@ -42,20 +58,12 @@ module.exports = {
                     ]
                 })
             },
-            {
-                test: /\.(jpg|png|svg)$/,
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]',
-                    outputPath:'.dist/img/'
-                },
-            }
-            // Loaders for other file types can go here
-
         ],
     },
     plugins: [
         extractSass,
-        createHtml
+        purify,
+        createHtml,
+        copyfiles
     ]
 };
