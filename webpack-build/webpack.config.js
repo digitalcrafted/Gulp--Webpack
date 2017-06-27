@@ -23,7 +23,7 @@ const createHtml = new HtmlWebpackPlugin({
 });
 const copyfiles = new CopyWebpackPlugin([
     // Copy directory contents to {output}/to/directory/
-    {from: './src/img', to: '../img'},
+    {from: './src/img', to: './img'},
 ], {
     ignore: [],
     copyUnmodified: true
